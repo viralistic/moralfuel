@@ -27,18 +27,18 @@ const skillColor = "navy";
     <title>{pageTitle}</title>
   </head>
   <body>
-    <style define:vars={{skillColor}}>
+    <style define:vars={{skillColor, fontWeight, textCase}}>
         h1 {
           color: purple;
           font-size: 4rem;
         }
         .skill {
-          color: green;
           color: var(--skillColor);
-          font-weight: bold;
+          font-weight: var(--fontWeight);
+          text-transform: var(--textCase);
         }
       </style>
-      
+
     <header>
       <div class="menu">
         <a href="/">Home</a>
