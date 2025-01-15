@@ -1,6 +1,11 @@
 ---
 import '../styles/global.css';
 import Hero1 from 'fulldev-ui/blocks/Hero1.astro'
+import Navigation from '../components/Navigation.astro';
+import "../styles/global.css";
+
+const pageTitle = "Home Page";
+
 ---
 
 <html lang="en">
@@ -14,12 +19,7 @@ import Hero1 from 'fulldev-ui/blocks/Hero1.astro'
   
   </head>
           <header>
-              <div class="menu">
-                  <a href="/">Home</a>
-                  <a href="/about">About</a>
-                  <a href="/blog">Blog</a>
-                  <a href="https://viralistic.nl">Home</a>
-              </div>
+            <Navigation />
           </header>
     <h1>Astro</h1>
     <Hero1
