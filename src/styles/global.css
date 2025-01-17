@@ -13,6 +13,10 @@
   
   link {
       color:white;
+      hover:white;
+      visit:white;
+      active:white;
+      focus:white;
   }
   
   button {
