@@ -8,7 +8,8 @@
       max-width: 80ch;
       padding: 1rem;
       line-height: 1.5;
-      width: 100vw
+      width: 100vw;
+      min-width: 100vw;
   }
   
   link {
