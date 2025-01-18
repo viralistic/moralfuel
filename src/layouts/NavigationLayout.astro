@@ -1,18 +1,17 @@
 ---
 import Layout from "./Base.astro";
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
   <header>
     <div class="menu">
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/blog">Blog</a>
-      <a href="https://viralistic.nl">Home</a>
+        <Navigation />
     </div>
   </header>
   <main>
     <slot />
   </main>
-  <footer></footer>
+  <footer><Footer /></footer>
 </Layout>

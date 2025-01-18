@@ -1,8 +1,9 @@
 ---
 import '../styles/global.css';
 import Hero1 from 'fulldev-ui/blocks/Hero1.astro'
-import Navigation from '../components/Navigation.astro';
+
 import NavigationLayout from "../layouts/NavigationLayout.astro";
+
 
 const pageTitle = "Home Page";
 
@@ -19,17 +20,273 @@ const pageTitle = "Home Page";
   
   </head>
           <header>
-            <Navigation />
+
           </header>
-    <h1>Astro</h1>
-    <Hero1
-  badge={{ text: 'astro' }}
-  heading="astro"
-  paragraph="My astro project"
-  buttons={[{ text: 'Lorem ipsum' }, { text: 'Lorem ipsum' }]}
-  image={{ src: '/images/placeholder-landscape.webp' }}
-/>
-    <p>My Astro site </p>
-    <button>Viralistic.nl</button>
+          <NavigationLayout>
+            <main class="main">
+              <section class="hero-section section">
+                <div class="styling">
+                  <div class="grad-blotch-wrapper opac-40 top">
+                    <div class="grad-blotch"></div>
+                  </div>
+                  <div class="bg-gray-grad stretch100x100"></div>
+                  <div class="ovals">
+                    <div class="oval"></div>
+                    <div class="oval is_lower"></div>
+                  </div>
+                </div>
+                <div class="h-15vh"></div>
+                <figure class="container">
+                  <div data-w-id="954fbecd-0f0c-4330-4ccf-f35c7a27859b" style="-webkit-transform:translate3d(0, 10vh, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 10vh, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 10vh, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 10vh, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="col">
+                    <div class="text-tagline text-light hide-mob">Viralistic digital agency amsterdam</div>
+                    <h1 class="hero-heading text-center">We give <span class="marked">premium brands</span> the unfair<span class="marker-eclipse">advantage</span></h1>
+                    <a data-w-id="dc90964b-bb5e-3227-61a0-cc97afc9c35e" href="portfolio.html" class="special-button w-inline-block">
+                      <div class="special-btn-circle">
+                        <div class="arrow-band-mover">
+                          <div class="arrow-band"><img loading="lazy" src="images/ion_arrow-up-outline.svg" alt="" class="special-btn-arrow"><img loading="lazy" src="images/ion_arrow-up-outline.svg" alt="" class="special-btn-arrow"><img loading="lazy" src="images/ion_arrow-up-outline.svg" alt="" class="special-btn-arrow"></div>
+                        </div>
+                        <div class="special-button-first-letter">V</div>
+                      </div>
+                      <div class="special-btn-text text-lighter">iew cases</div>
+                    </a>
+                  </div>
+                </figure>
+                <div class="h-5vh"></div>
+                <div class="homepage-portfolio-container">
+                  <div class="hp-card-placers outer-card"><img class="hp-card-image stretch100x100 filter-gray" src="images/image-545.webp" alt="" draggable="false" sizes="(max-width: 767px) 100vw, 15vw" loading="lazy" srcset="images/image-545-p-500.webp 500w, images/image-545-p-800.webp 800w, images/image-545-p-1080.webp 1080w, images/image-545.webp 1169w"></div>
+                  <div class="hp-card-placers is_mobile-space-top">
+                    <div class="homepage-square-block"><img class="hp-card-image stretch100x100" src="images/Lightbox-Silverdrive-personal-drivers-luxury-website-design-Sign.webp" alt="" draggable="false" sizes="(max-width: 767px) 50vw, (max-width: 991px) 15vw, 1500px" loading="lazy" srcset="images/Lightbox-Silverdrive-personal-drivers-luxury-website-design-Sign-p-500.webp 500w, images/Lightbox-Silverdrive-personal-drivers-luxury-website-design-Sign-p-800.webp 800w, images/Lightbox-Silverdrive-personal-drivers-luxury-website-design-Sign-p-1080.webp 1080w, images/Lightbox-Silverdrive-personal-drivers-luxury-website-design-Sign.webp 1500w"></div>
+                    <div class="homepage-2nd-block"><img class="hp-card-image stretch100x100" src="images/Kaine-Parkup-dubai-branding-website.webp" alt="" draggable="false" sizes="(max-width: 767px) 50vw, (max-width: 991px) 15vw, 1500px" loading="lazy" srcset="images/Kaine-Parkup-dubai-branding-website-p-500.webp 500w, images/Kaine-Parkup-dubai-branding-website-p-800.webp 800w, images/Kaine-Parkup-dubai-branding-website-p-1080.webp 1080w, images/Kaine-Parkup-dubai-branding-website.webp 1500w"></div>
+                  </div>
+                  <div data-w-id="9db14e73-eee3-2e32-db6d-57d0a08b1b8d" class="hp-card-placers middle-card"><img class="hp-card-image stretch100x100" src="images/iPad-Pro-Elite-Yacht-elegant-webdesign.webp" alt="" draggable="false" sizes="(max-width: 767px) 50vw, 40vw" loading="lazy" srcset="images/iPad-Pro-Elite-Yacht-elegant-webdesign-p-500.webp 500w, images/iPad-Pro-Elite-Yacht-elegant-webdesign-p-800.webp 800w, images/iPad-Pro-Elite-Yacht-elegant-webdesign-p-1080.webp 1080w, images/iPad-Pro-Elite-Yacht-elegant-webdesign.webp 1500w"></div>
+                  <div class="hp-card-placers hide-ls-down"><img class="hp-card-image stretch100x100" src="images/Julia-clinics-branding.webp" alt="" draggable="false" sizes="(max-width: 767px) 100vw, (max-width: 991px) 15vw, 1500px" loading="lazy" srcset="images/Kaolin-Cosmetics-p-500.webp 500w, images/Kaolin-Cosmetics-p-800.webp 800w, images/Kaolin-Cosmetics-p-1080.webp 1080w, images/Julia-clinics-branding.webp 1500w"></div>
+                  <div class="hp-card-placers outer-card"><img class="hp-card-image stretch100x100 filter-gray" src="images/Recommerce-website-eriona-sejdiu-kosova.webp" alt="" draggable="false" sizes="(max-width: 767px) 100vw, (max-width: 991px) 15vw, 1500px" loading="lazy" srcset="images/R-mockups-MacBook-Air-15-inch-1-p-500.webp 500w, images/R-mockups-MacBook-Air-15-inch-1-p-800.webp 800w, images/R-mockups-MacBook-Air-15-inch-1-p-1080.webp 1080w, images/Recommerce-website-eriona-sejdiu-kosova.webp 1500w"></div>
+                </div>
+              </section>
+              <section class="content-sectie section homepage-align-left">
+                <div class="h-10vh"></div>
+                <div class="container text-lighter max-1080">
+                  <div class="col flex-verti-ss stats-card">
+                    <h2 class="heading-large text-left">We <a href="#" class="marked">accelerate </a>luxury businesses</h2>
+                    <a data-w-id="676471f7-a8bf-7868-42e7-972eadcfa107" href="about-us.html" class="special-button is-left w-inline-block">
+                      <div class="special-btn-circle">
+                        <div class="arrow-band-mover">
+                          <div class="arrow-band"><img loading="lazy" src="images/ion_arrow-up-outline.svg" alt="" class="special-btn-arrow"><img loading="lazy" src="images/ion_arrow-up-outline.svg" alt="" class="special-btn-arrow"><img loading="lazy" src="images/ion_arrow-up-outline.svg" alt="" class="special-btn-arrow"></div>
+                        </div>
+                        <div class="special-button-first-letter">A</div>
+                      </div>
+                      <div class="special-btn-text text-lighter">bout us</div>
+                    </a>
+                  </div>
+                  <div class="col wid-less flex-verti-sc">
+                    <div>
+                      <p class="text-left text-ch-max25">Viralistic enhances your brand by demistifing your vision and upgrading aesthetics. <br>‍<br>What you&#x27;ll <em>feel</em> is a fluent experience by your clients online. <br><br>In this way, you&#x27;ll make an unforgettable experience for your clients. <br></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="h-10vh"></div>
+                <div class="container text-lighter"></div>
+                <div class="h-10vh"></div>
+                <div class="styling">
+                  <div class="gray-bg-fader"></div>
+                  <div class="grad-blotch-wrapper opac-40 bot-left">
+                    <div class="grad-blotch homepage-larger"></div>
+                  </div>
+                </div>
+                <div class="container"></div>
+              </section>
+              <section class="stats-section section">
+                <div class="container stats-container mob-vert">
+                  <div class="col flex-verti-ss">
+                    <div class="stats-card">
+                      <h2 class="heading-large text-left">Impact we made- in numbers</h2>
+                    </div>
+                  </div>
+                  <div class="col flex-verti-st-end pb-10 wid-less">
+                    <div class="stats-card flex-verti-st-end">
+                      <p class="text-left text-ch-max25">Over a period of 6 months.<a href="https://www.viralistic.nl/wf-post/3x-sales-in-6-months" target="_blank" class="link"> View Detailed brief here.</a><br></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="line-fade is_ignore-paddng"></div>
+                <div class="container stats-container">
+                  <div class="col">
+                    <div class="stats-card">
+                      <div class="line-fade is-vertical left mid"></div>
+                      <div class="line-fade is-vertical left"></div>
+                      <div class="wrapper flex-verti-ss">
+                        <div class="stats title">Marketing costs</div>
+                        <div id="countup" class="stats is_result">-87%</div>
+                      </div><img src="images/Marketing-costs.svg" loading="lazy" alt="" class="stats-graph">
+                      <div bind="c7cc2204-7dcf-7b92-e378-fdd77d082591" class="noise"></div>
+                    </div>
+                  </div>
+                  <div class="col wid-less">
+                    <div class="stats-card">
+                      <div class="stats title is_smaller">Impressions</div>
+                      <div class="stats is_result is_smaller">+360%</div><img src="images/Impressions.svg" loading="lazy" data-w-id="9d539338-d6d8-7781-4fee-46b787a5fc42" alt="" class="stats-graph">
+                      <div bind="c7cc2204-7dcf-7b92-e378-fdd77d082591" class="noise"></div>
+                    </div>
+                    <div class="line-fade"></div>
+                    <div class="stats-card">
+                      <div class="line-fade is-vertical right"></div>
+                      <div class="stats title is_smaller">NET sales value</div>
+                      <div class="stats is_result is_smaller">+256%</div><img src="images/Net-sales-value.svg" loading="lazy" alt="" class="stats-graph">
+                    </div>
+                  </div>
+                </div>
+                <div class="line-fade is_ignore-paddng"></div>
+                <div class="h-10vh"></div>
+              </section>
+              <section class="services-section section">
+                <div class="h-10vh"></div>
+                <div class="container">
+                  <div class="wrapper flex-verti-ss">
+                    <div class="text-tagline text-light">Services</div>
+                    <h2 class="h2">Our toolkit</h2>
+                  </div>
+                </div>
+                <div class="services-container">
+                  <div class="col flex-verti-cc">
+                    <div class="services-cms w-dyn-list">
+                      <div role="list" class="w-dyn-items">
+                        <div role="listitem" class="w-dyn-item">
+                          <a data-w-id="622ba8c8-e33f-e39f-c6c0-316b14ba9cb3" href="#" class="services-card w-inline-block">
+                            <div class="services-hover-loader-container">
+                              <div class="services-hover-loader-inner"></div>
+                              <div class="hover-fader is_left"></div>
+                              <div class="hover-fader"></div>
+                            </div>
+                            <div class="statement-content-box">
+                              <h3 aria-label="account login button" class="statement-card-statement w-dyn-bind-empty"></h3>
+                            </div>
+                            <div class="services-image-appear is_more-left"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="w-dyn-bind-empty">
+                              <p class="service-appear-text text-tagline w-dyn-bind-empty"></p>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="w-dyn-empty">
+                        <div>No items found.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="h-5vh"></div>
+                <div class="container">
+                  <div class="wrapper flex-verti-ss">
+                    <a id="about-us" href="our-services.html" class="button-outer is-outline hide-ls-down w-node-cd7343bd-4dbe-c1c6-6518-a1543db1cec2-a11f9fc5 w-inline-block">
+                      <div class="button-text text-lighter">See all services</div>
+                      <div class="button-circle is-outline"><img width="18" loading="lazy" alt="" src="https://uploads-ssl.webflow.com/66bf1813e3a8a0c7534e4ea4/66bf1813e3a8a0c7534e50c0_Arrow.svg" class="button-icon"></div>
+                    </a>
+                  </div>
+                </div>
+              </section>
+              <section class="content-sectie section">
+                <div class="h-20vh"></div>
+                <div class="container">
+                  <div class="col flex-verti-cc">
+                    <h2 class="h2">Do you want...</h2>
+                  </div>
+                </div>
+                <div class="h-5vh"></div>
+                <div class="container max-1080">
+                  <div class="col flex-verti-cc">
+                    <div data-w-id="bddbaeda-2a51-5695-f08e-8ba498a36b3b" class="statement-card text-light slide-open">
+                      <div class="statement-number-box">
+                        <div data-is-ix2-target="1" class="open-icon" data-w-id="fb35a6fb-9acb-9b96-d838-2a91e31d5a4f" data-animation-type="lottie" data-src="documents/lottieflow-dropdown-07-2-ffffff-easey.json" data-loop="0" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="2.5" data-duration="0" data-ix2-initial-state="1"></div>
+                      </div>
+                      <div data-w-id="bddbaeda-2a51-5695-f08e-8ba498a36b3f" class="statement-content-box">
+                        <h3 class="statement-card-statement mt-2-5">A trustworthy, luxury brand online </h3>
+                        <p data-w-id="09b2e9a4-7d0e-c666-f180-09094a858297" class="faq-answer">Ideally, your brand would radiate online what you already show offline- a premium experience. In this situation, communication and field experience is key. Your digital partner should understand what gives a luxury brand its value- and especially- translate it towards the end users in a seemless way, leaving them with a peaceful, non agitating experience.</p>
+                      </div>
+                    </div>
+                    <div data-w-id="bddbaeda-2a51-5695-f08e-8ba498a36b44" class="statement-card text-light slide-open">
+                      <div class="statement-number-box">
+                        <div data-is-ix2-target="1" class="open-icon" data-w-id="ce1aacd3-0d6b-58f9-4109-ec7af3c8239b" data-animation-type="lottie" data-src="documents/lottieflow-dropdown-07-2-ffffff-easey.json" data-loop="0" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="2.5" data-duration="0" data-ix2-initial-state="1"></div>
+                      </div>
+                      <div style="height:60px" class="statement-content-box">
+                        <h3 class="statement-card-statement">To guide your clients as efficiently as possible</h3>
+                        <p style="opacity:0" class="faq-answer">Does your phone rings with the same questions? Are there repetitive tasks troughout your process? We love fixing inefficiencies, because the impact they have on your life are so big. You get to discover that the digital side of your business can relieve you, rather than bother you. We want you to spend your time in your passion, and we make this happen by applying Lean Business methods, first implemented by the Toyota assembly line. Our goal is to not let you notice the change- we want you to notice the free time and clear vision you are able to carry forward. </p>
+                      </div>
+                    </div>
+                    <div data-w-id="bddbaeda-2a51-5695-f08e-8ba498a36b4d" class="statement-card text-light slide-open">
+                      <div class="statement-number-box">
+                        <div data-is-ix2-target="1" class="open-icon" data-w-id="5e44d354-fa81-f052-ff16-cf905ebd2389" data-animation-type="lottie" data-src="documents/lottieflow-dropdown-07-2-ffffff-easey.json" data-loop="0" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="2.5" data-duration="0" data-ix2-initial-state="1"></div>
+                      </div>
+                      <div style="height:60px" class="statement-content-box">
+                        <h3 class="statement-card-statement">A clear vision in your digital footprint</h3>
+                        <p style="opacity:0" class="faq-answer">Everyone imidiately knows it is you! There is already so much on the web- unfortunately- a lot of copy paste, templates and other trash. Our designs are made by real humans and we don&#x27;t outsource our work to India. <br><br>We have limited space of projects we can take on, but the projects we work with will recieve a unique design and online experience. </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="styling">
+                  <div class="light-bot-grad-melt"></div>
+                </div>
+                <div class="h-10vh"></div>
+                <div class="styling">
+                  <div class="gray-bg-fader"></div>
+                  <div class="grad-blotch-wrapper opac-40 top">
+                    <div class="grad-blotch"></div>
+                  </div>
+                </div>
+              </section>
+              <section bind="08f00712-75b6-cc14-0914-bca7aff35cf6" class="section-strong section is-shows_in_section-above">
+                <div class="strong-section-upper">
+                  <h2 class="content-heading font-center">You are in the right place</h2>
+                </div>
+                <div class="h-40"></div>
+                <div data-w-id="0af22920-a045-0666-74d8-4fc12f9112f7" class="section-brands section">
+                  <div class="logo-strip-wrapper-2">
+                    <div class="logo-strip-2"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/The-lake.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Best-western.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Mart-Visser.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/bold-lynk.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Volvo.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Binni.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Louvre.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Lamborghini.svg" loading="lazy" class="logo-image"></div>
+                    <div class="logo-strip-2"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/The-lake.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Best-western.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Mart-Visser.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/bold-lynk.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Volvo.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Binni.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Louvre.svg" loading="lazy" class="logo-image"><img width="121" sym-bind="{&quot;img&quot;:{&quot;type&quot;:&quot;Select&quot;,&quot;val&quot;:{&quot;from&quot;:{&quot;type&quot;:&quot;Variable&quot;,&quot;val&quot;:&quot;data&quot;},&quot;prop&quot;:&quot;5aedacf3-4a3f-bed4-4bdc-4f13ed6459be&quot;}}}" alt="" src="images/Lamborghini.svg" loading="lazy" class="logo-image"></div>
+                  </div>
+                </div>
+                <div class="h-40"></div>
+                <div class="strong-section-upper is-bottom">
+                  <div class="rotat180">
+                    <h2 class="content-heading font-center">Plan a discovery call</h2>
+                    <div class="h-20"></div>
+                    <a data-w-id="0af22920-a045-0666-74d8-4fc12f911312" href="https://calendly.com/viralistic/30min" target="_blank" class="special-button w-inline-block">
+                      <div class="special-btn-circle">
+                        <div class="arrow-band-mover">
+                          <div class="arrow-band"><img loading="lazy" src="images/ion_arrow-up-outline.svg" alt="" class="special-btn-arrow"><img loading="lazy" src="images/ion_arrow-up-outline.svg" alt="" class="special-btn-arrow"><img loading="lazy" src="images/ion_arrow-up-outline.svg" alt="" class="special-btn-arrow"></div>
+                        </div>
+                        <div class="special-button-first-letter">3</div>
+                      </div>
+                      <div class="special-btn-text text-lighter">0 Min call</div>
+                    </a>
+                  </div>
+                </div>
+              </section>
+              <section class="content-sectie section">
+                <div class="h-10vh"></div>
+                <div class="container">
+                  <div class="col text-light text-center flex-verti-cc">
+                    <div class="text-tagline text-light">Operation areas</div>
+                    <div class="w-dyn-list">
+                      <div role="list" class="w-dyn-items">
+                        <div role="listitem" class="w-dyn-item">
+                          <a data-w-id="0450bd94-df60-36d0-bf2b-7a8691e927ae" href="#" class="city-link-block w-inline-block">
+                            <h2 class="statement-card-statement w-dyn-bind-empty"></h2>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="w-dyn-empty">
+                        <div>No items found.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="h-20vh"></div>
+                <div class="styling">
+                  <div class="grad-blotch-wrapper opac-40 top">
+                    <div class="grad-blotch"></div>
+                  </div>
+                </div>
+              </section>
+            </main>
+    </NavigationLayout>
   </body>
 </html>

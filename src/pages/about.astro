@@ -1,8 +1,6 @@
 ---
-import Layout from "../layouts/Base.astro";
-import NavigationLayout from "../layouts/NavigationLayout.astro";
 import '../styles/global.css';
-
+import NavigationLayout from "../layouts/NavigationLayout.astro";
 const pageTitle = "About Me";
 
 const identity = {
@@ -29,7 +27,7 @@ const fontWeight = "300";
 
 ---
 
-
+<NavigationLayout>
   <h1>{pageTitle}</h1>
   <p>My Astro site</p>
   <p>Here are a few facts about me:</p>
@@ -46,6 +44,8 @@ const fontWeight = "300";
       )
     }
   </ul>
+
+
   <p>My skills are:</p>
   <ul>
     {skills.map((skill) => <li class="skill">{skill}</li>)}
@@ -64,6 +64,8 @@ const fontWeight = "300";
   }
   <button link="https://viralistic.nl">Viralistic.nl</button>
 </NavigationLayout>
+
+<footer />
 
 <style define:vars={{ skillColor, fontWeight, textCase }}>
 
