@@ -1,0 +1,18 @@
+---
+interface Props {
+  size?: number;
+}
+const { size = 22 } = Astro.props;
+---
+
+<svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" class="flame">
+  <path
+    d="M12.3 2c.6 3.6-1.2 5.5-3 7.5C7.5 11.4 5.6 13.4 5.6 16.6A6.4 6.4 0 0 0 12 23a6.4 6.4 0 0 0 6.4-6.5c0-2.4-1.1-4.1-2.3-5.5.1 1.7-.5 3-1.7 3.6.4-3.7-.4-9-2.1-12.6Z"
+    fill="currentColor"></path>
+</svg>
+
+<style>
+  .flame {
+    color: var(--accent);
+  }
+</style>

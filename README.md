@@ -1,47 +1,50 @@
-# Astro Starter Kit: Minimal
+# MoralFuel
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Website and journal for [moralfuel.com](https://moralfuel.com), built with [Astro](https://astro.build).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## Commands
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+| Command        | Action                              |
+| :------------- | :---------------------------------- |
+| `pnpm install` | Install dependencies                |
+| `pnpm dev`     | Dev server at `localhost:4321`      |
+| `pnpm build`   | Type-check and build to `./dist/`   |
+| `pnpm preview` | Preview the production build        |
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Structure
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+  consts.ts            site name, nav, contact email, formats
+  content.config.ts    blog schema
+  content/blog/        posts (.md or .mdx)
+  components/          Header, Footer, PostCard, Toc, Scripture, Subscribe
+  layouts/Base.astro   HTML shell, SEO and Open Graph tags, theme
+  lib/posts.ts         helpers: published posts, tags, reading time, related
+  pages/               home, about, journal, post, tag pages, RSS, robots
+  styles/global.css    design tokens (light and dark) and prose styles
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Writing a post
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Add a file to `src/content/blog/`. The filename becomes the URL (`/blog/<filename>/`).
 
-Any static assets, like images, can be placed in the `public/` directory.
+```md
+---
+title: 'Title (max 90 chars)'
+description: 'One or two sentences, used in cards and search results.'
+pubDate: 2026-10-01
+format: microfuel          # microfuel = short lesson, superfuel = deep dive
+tags: ['habits', 'prayer']
+scripture:                 # optional key verse shown above the post
+  text: 'Iron sharpeneth iron...'
+  reference: 'Proverbs 27:17'
+  translation: 'KJV'       # defaults to KJV
+cover: ./images/cover.jpg  # optional, relative to the post, auto-optimised
+coverAlt: 'Describe the image'
+featured: true             # optional, pins it at the top of the journal
+draft: true                # optional, only visible in `pnpm dev`
+---
+```
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Every post automatically gets reading time, a table of contents, tag pages, related posts, previous/next links, RSS, sitemap and structured data.

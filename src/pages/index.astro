@@ -1,29 +1,228 @@
 ---
-import '../styles/global.css';
-import Hero1 from 'fulldev-ui/blocks/Hero1.astro'
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import Subscribe from '../components/Subscribe.astro';
+import { FORMATS } from '../consts';
+import { getPosts } from '../lib/posts';
 
-import NavigationLayout from "../layouts/NavigationLayout.astro";
+const latest = (await getPosts()).slice(0, 3);
 
-
-const pageTitle = "Home Page";
-
+const features = [
+  {
+    title: 'A coach you can ask anything',
+    text: 'Honest answers grounded in scripture, guided prayer, and encouragement when you need it most. Talk to a real person whenever you prefer.',
+  },
+  {
+    title: 'The Bible, without the friction',
+    text: 'A calm reader that makes it easy to move around. Search by what you feel, like love, fear or heartbreak, and keep typed or voice notes.',
+  },
+  {
+    title: 'Listen mode for Sunday',
+    text: 'Follow along with a sermon, see the referenced passages as they come up, and keep a summary to return to later.',
+  },
+  {
+    title: 'Home groups near you',
+    text: 'Once verified, find bible studies, running groups and dinners with people who share your faith.',
+  },
+  {
+    title: 'Lessons that meet you where you are',
+    text: 'Short lessons shaped around what you are working through, so growth fits into a real day.',
+  },
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+<Base>
+  <section class="hero wrap">
+    <p class="eyebrow">Ancient wisdom, made for today</p>
+    <h1>Fuel for a life that <em>means</em> something.</h1>
+    <p class="lead">
+      MoralFuel strips the frills from spiritual teaching and makes the wisdom of the Bible simple to understand and
+      practical to live. Short lessons, honest answers, real community.
+    </p>
+    <div class="actions">
+      <a class="btn btn-primary" href="/blog">Read the journal &rarr;</a>
+      <a class="btn btn-ghost" href="/about">Why MoralFuel</a>
+    </div>
+  </section>
 
-    <title>Astro</title>
-  
-  </head>
-          <header>
+  <section class="wrap formats" aria-label="Two ways to read">
+    {
+      Object.entries(FORMATS).map(([key, f]) => (
+        <div class="format">
+          <span class="badge" data-format={key}>
+            {f.label}
+          </span>
+          <h2>{f.short}</h2>
+          <p class="muted">{f.description}</p>
+        </div>
+      ))
+    }
+  </section>
 
-          </header>
-          <NavigationLayout>
-            
-    </NavigationLayout>
-  </body>
-</html>
+  {
+    latest.length > 0 && (
+      <section class="wrap latest" aria-labelledby="latest-title">
+        <div class="section-head">
+          <h2 id="latest-title">Latest from the journal</h2>
+          <a href="/blog" class="muted more">
+            All lessons &rarr;
+          </a>
+        </div>
+        <div class="list">
+          {latest.map((post) => (
+            <PostCard post={post} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="wrap app" aria-labelledby="app-title">
+    <div class="app-intro">
+      <p class="eyebrow">In development</p>
+      <h2 id="app-title">The Bible is one channel. We are building more.</h2>
+      <p class="muted">
+        The MoralFuel app brings the lessons, the scripture and the community together in one quiet place. Parts of it
+        will also work right here on the web, no install needed.
+      </p>
+    </div>
+    <ol class="features">
+      {
+        features.map((f, i) => (
+          <li>
+            <span class="num">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{f.title}</h3>
+              <p class="muted">{f.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <div class="wrap">
+    <Subscribe />
+  </div>
+</Base>
+
+<style>
+  .hero {
+    display: grid;
+    justify-items: center;
+    gap: 1.5rem;
+    padding-block: clamp(4rem, 12vw, 8.5rem) clamp(3rem, 8vw, 5rem);
+    text-align: center;
+  }
+  h1 {
+    font-size: clamp(2.8rem, 8.5vw, 5.75rem);
+    max-width: 14ch;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+  }
+  h1 em {
+    color: var(--accent);
+  }
+  .lead {
+    max-width: 36rem;
+    font-size: clamp(1.1rem, 2.2vw, 1.25rem);
+    color: var(--muted);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .formats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1rem;
+  }
+  .format {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .format h2 {
+    font-size: 1.7rem;
+  }
+
+  .latest {
+    margin-top: clamp(5rem, 12vw, 8rem);
+  }
+  .section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .section-head h2 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+  }
+  .more {
+    font-size: 0.93rem;
+    text-decoration: none;
+  }
+  .more:hover {
+    color: var(--ink);
+  }
+  .list {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .app {
+    display: grid;
+    gap: 3rem;
+    margin-block: clamp(5rem, 12vw, 8rem);
+  }
+  @media (min-width: 60rem) {
+    .app {
+      grid-template-columns: 5fr 7fr;
+      gap: 5rem;
+    }
+    .app-intro {
+      position: sticky;
+      top: 7rem;
+      align-self: start;
+    }
+  }
+  .app-intro {
+    display: grid;
+    gap: 1rem;
+  }
+  .app-intro h2 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+  }
+  .features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .features li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .features li:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+  .num {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--accent);
+    padding-top: 0.15rem;
+  }
+  .features h3 {
+    font-size: 1.45rem;
+    margin-bottom: 0.4rem;
+  }
+</style>

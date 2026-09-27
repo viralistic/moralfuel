@@ -1,77 +1,145 @@
 ---
-import '../styles/global.css';
-import NavigationLayout from "../layouts/NavigationLayout.astro";
-const pageTitle = "About Me";
+import Base from '../layouts/Base.astro';
+import Scripture from '../components/Scripture.astro';
+import Subscribe from '../components/Subscribe.astro';
 
-const identity = {
-  firstName: "Sarah",
-  country: "Canada",
-  occupation: "Technical Writer",
-  hobbies: ["photography", "birdwatching", "baseball"],
-};
-
-const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
-
-const happy = true;
-const finished = false;
-const goal = 3;
-
-
-const skillColor = "navy";
-const textCase = "uppercase";
-const fontWeight = "300";
-
-
-
-
-
+const principles = [
+  {
+    title: 'Simple, not shallow',
+    text: 'We remove the jargon and the frills, never the truth. Every lesson points back to scripture.',
+  },
+  {
+    title: 'Practical first',
+    text: 'Ancient wisdom only matters if you can live it on a Tuesday. We write for real work, real relationships and real temptation.',
+  },
+  {
+    title: 'Honest about struggle',
+    text: 'Addiction, loneliness, doubt and heartbreak are part of life. We talk about them openly and without shame.',
+  },
+  {
+    title: 'Safe by design',
+    text: 'Community only works when people feel safe. Everything shared on MoralFuel is carefully moderated.',
+  },
+];
 ---
 
-<NavigationLayout>
-  <h1>{pageTitle}</h1>
-  <p>My Astro site</p>
-  <p>Here are a few facts about me:</p>
-  <ul>
-    <li>My name is {identity.firstName}.</li>
-    <li>
-      I live in {identity.country} and I work as a {identity.occupation}.
-    </li>
-    {
-      identity.hobbies.length >= 2 && (
-        <li>
-          Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
-        </li>
-      )
-    }
-  </ul>
+<Base title="About" description="Why MoralFuel exists: making the wisdom of the Bible understandable and practical for a bigger audience.">
+  <article class="wrap">
+    <header class="intro">
+      <p class="eyebrow">About MoralFuel</p>
+      <h1>Lowering the barrier to a life of faith.</h1>
+    </header>
 
+    <div class="body">
+      <div class="prose">
+        <p>
+          For many people the Bible feels distant. The language is old, the context is unfamiliar, and it is hard to
+          know where to begin. So they never do.
+        </p>
+        <p>
+          <strong>MoralFuel exists to change that.</strong> We take the wisdom that has guided people for thousands of
+          years and make it clear, short and usable. Not a watered down version, but the same truth in words that fit a
+          modern life.
+        </p>
+        <p>
+          Reading the Bible is one channel. We believe in offering more: short lessons you can finish in five minutes,
+          deeper studies for when you have the time, a coach you can ask anything, and a community that walks with you.
+        </p>
+      </div>
 
-  <p>My skills are:</p>
-  <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
-  </ul>
+      <Scripture
+        text="Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."
+        reference="Proverbs 3:5-6"
+        translation="KJV"
+      />
+    </div>
 
-  {happy && <p>I am happy to be learning Astro!</p>}
+    <section class="principles" aria-labelledby="principles-title">
+      <h2 id="principles-title">What we hold on to</h2>
+      <div class="grid">
+        {
+          principles.map((p) => (
+            <div class="card">
+              <h3>{p.title}</h3>
+              <p class="muted">{p.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
 
-  {finished && <p>I finished this tutorial!</p>}
+    <aside class="care">
+      <h2>If you are struggling right now</h2>
+      <p>
+        MoralFuel is not a replacement for professional help. If you are thinking about harming yourself, please call
+        your local emergency number or a crisis line today. Talking to someone is a sign of strength.
+      </p>
+    </aside>
 
-  {
-    goal === 3 ? (
-      <p>My goal is to finish in 3 days.</p>
-    ) : (
-      <p>My goal is not 3 days.</p>
-    )
+    <Subscribe />
+  </article>
+</Base>
+
+<style>
+  .intro {
+    display: grid;
+    gap: 1rem;
+    padding-block: clamp(3rem, 8vw, 5.5rem) clamp(2rem, 5vw, 3rem);
+    max-width: 48rem;
   }
-  <button link="https://viralistic.nl">Viralistic.nl</button>
-</NavigationLayout>
-
-<footer />
-
-<style define:vars={{ skillColor, fontWeight, textCase }}>
-
-  .skill {
-    color: var(--skillColor);
-    font-weight: var(--fontWeight);
-    text-transform: var(--textCase);
+  h1 {
+    font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+  }
+  .body {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (min-width: 60rem) {
+    .body {
+      grid-template-columns: minmax(0, var(--measure)) minmax(0, 22rem);
+      justify-content: space-between;
+    }
+    .body > :global(.scripture) {
+      position: sticky;
+      top: 7rem;
+    }
+  }
+  .principles {
+    margin-block: clamp(4rem, 10vw, 7rem);
+  }
+  .principles h2 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    margin-bottom: 1.5rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+  }
+  .card {
+    display: grid;
+    align-content: start;
+    gap: 0.6rem;
+    padding: 1.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .card h3 {
+    font-size: 1.4rem;
+  }
+  .care {
+    display: grid;
+    gap: 0.75rem;
+    max-width: var(--measure);
+    margin-bottom: 5rem;
+    padding-left: 1.25rem;
+    border-left: 2px solid var(--accent);
+  }
+  .care h2 {
+    font-size: 1.4rem;
+  }
+  .care p {
+    color: var(--muted);
   }
 </style>
