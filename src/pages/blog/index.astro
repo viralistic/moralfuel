@@ -1,0 +1,172 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import Subscribe from '../../components/Subscribe.astro';
+import ZoomHero from '../../components/ZoomHero.astro';
+import { FORMATS } from '../../consts';
+import { getPosts, getTags } from '../../lib/posts';
+
+const posts = await getPosts();
+const featured = posts.find((p) => p.data.featured) ?? posts[0];
+const rest = posts.filter((p) => p !== featured);
+const tags = getTags(posts);
+---
+
+<Base title="Journal" description="Short lessons and deep dives that make the wisdom of the Bible practical for everyday life.">
+  <ZoomHero eyebrow="The journal" title="Lessons for the life you are actually living.">
+    <strong>Microfuel</strong> for a five minute lesson. <strong>Superfuel</strong> when you want to go deeper.
+  </ZoomHero>
+
+  <div class="wrap">
+    <div class="spacer"></div>
+
+    {featured && <PostCard post={featured} variant="feature" />}
+
+    <div class="toolbar" role="search">
+      <div class="filters" role="group" aria-label="Filter by format">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        {
+          Object.entries(FORMATS).map(([key, f]) => (
+            <button class="chip" type="button" data-filter={key} aria-pressed="false">
+              {f.label}
+            </button>
+          ))
+        }
+      </div>
+      <label class="search">
+        <span class="visually-hidden">Search the journal</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+          <path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+        </svg>
+        <input type="search" placeholder="Search lessons" data-search-input />
+      </label>
+    </div>
+
+    <div class="list" data-list>
+      {rest.map((post) => <PostCard post={post} />)}
+    </div>
+    <p class="empty muted" data-empty hidden>No lessons match that yet. Try another word.</p>
+
+    {
+      tags.length > 0 && (
+        <section class="topics" aria-labelledby="topics-title">
+          <h2 id="topics-title" class="eyebrow">Browse by topic</h2>
+          <div class="tags">
+            {tags.map((t) => (
+              <a class="chip" href={`/blog/tag/${t.slug}/`}>
+                {t.tag} <span>{t.count}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <Subscribe />
+  </div>
+</Base>
+
+<script>
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const input = document.querySelector<HTMLInputElement>('[data-search-input]');
+  const posts = [...document.querySelectorAll<HTMLElement>('[data-list] [data-post]')];
+  const empty = document.querySelector<HTMLElement>('[data-empty]');
+  let format = 'all';
+
+  function apply() {
+    const q = (input?.value ?? '').trim().toLowerCase();
+    // when filtering, the featured card is included in the search pool too
+    const featured = document.querySelector<HTMLElement>('.feature[data-post]');
+    const active = q !== '' || format !== 'all';
+    let shown = 0;
+    for (const el of posts) {
+      const match = (format === 'all' || el.dataset.format === format) && (!q || el.dataset.search!.includes(q));
+      el.hidden = !match;
+      if (match) shown++;
+    }
+    if (featured) {
+      const match =
+        (format === 'all' || featured.dataset.format === format) && (!q || featured.dataset.search!.includes(q));
+      featured.hidden = active && !match;
+      if (active && match) shown++;
+    }
+    if (empty) empty.hidden = shown > 0 || !active;
+  }
+
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      format = chip.dataset.filter ?? 'all';
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+      apply();
+    }),
+  );
+  input?.addEventListener('input', apply);
+</script>
+
+<style>
+  .spacer {
+    height: clamp(2rem, 5vw, 3rem);
+  }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 0 1 18rem;
+    min-width: 0;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--muted);
+  }
+  @media (max-width: 40rem) {
+    .search {
+      flex-basis: 100%;
+    }
+  }
+  .search:focus-within {
+    border-color: var(--ink);
+  }
+  .search input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.93rem;
+  }
+  .list {
+    border-bottom: 1px solid var(--line);
+  }
+  .empty {
+    padding-block: 2rem;
+  }
+  .topics {
+    margin-block: 4rem 5rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .tags span {
+    opacity: 0.6;
+  }
+</style>

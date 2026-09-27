@@ -1,0 +1,43 @@
+---
+import { SITE } from '../consts';
+---
+
+<section class="subscribe" aria-labelledby="subscribe-title">
+  <p class="eyebrow">Stay fuelled</p>
+  <h2 id="subscribe-title">One honest lesson at a time.</h2>
+  <p class="muted">
+    New Microfuel and Superfuel lessons land in the journal first. Follow along by RSS, or send us a note to hear when
+    the app opens up.
+  </p>
+  <div class="actions">
+    <a class="btn btn-primary" href="/rss.xml">Follow via RSS</a>
+    <a class="btn btn-ghost" href={`mailto:${SITE.email}?subject=Notify%20me%20about%20the%20MoralFuel%20app`}>
+      Notify me about the app
+    </a>
+  </div>
+</section>
+
+<style>
+  .subscribe {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    padding: clamp(2.5rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+    border-radius: calc(var(--radius) + 6px);
+    background: var(--surface);
+    text-align: center;
+  }
+  h2 {
+    font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  }
+  p.muted {
+    max-width: 32rem;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+</style>

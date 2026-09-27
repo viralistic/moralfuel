@@ -1,0 +1,73 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+const headings = Astro.props.headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{
+  headings.length > 1 && (
+    <nav class="toc" aria-label="On this page">
+      <p class="eyebrow">On this page</p>
+      <ol>
+        {headings.map((h) => (
+          <li class:list={{ sub: h.depth === 3 }}>
+            <a href={`#${h.slug}`}>{h.text}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.toc a')];
+  const targets = links
+    .map((a) => document.getElementById(decodeURIComponent(a.hash.slice(1))))
+    .filter((el): el is HTMLElement => !!el);
+  if (targets.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          links.forEach((a) => a.toggleAttribute('data-active', a.hash === `#${entry.target.id}`));
+        }
+      },
+      { rootMargin: '0px 0px -70% 0px' },
+    );
+    targets.forEach((t) => observer.observe(t));
+  }
+</script>
+
+<style>
+  .toc {
+    font-size: 0.88rem;
+  }
+  ol {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    border-left: 1px solid var(--line);
+  }
+  li.sub {
+    padding-left: 0.75rem;
+  }
+  a {
+    display: block;
+    margin-left: -1px;
+    padding: 0.3rem 0 0.3rem 0.9rem;
+    border-left: 1px solid transparent;
+    color: var(--muted);
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  a:hover {
+    color: var(--ink);
+  }
+  a[data-active] {
+    color: var(--ink);
+    border-left-color: var(--accent);
+  }
+</style>

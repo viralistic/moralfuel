@@ -1,0 +1,84 @@
+---
+// Full-bleed hero with a slowly zooming background (the ::after layer).
+// Pass `image` for a photo background; without it a warm gradient is used.
+interface Props {
+  eyebrow?: string;
+  title: string;
+  image?: string;
+}
+
+const { eyebrow, title, image } = Astro.props;
+---
+
+<section class="section background-zoom-after zoom-hero" style={image ? `--hero-image: url('${image}')` : undefined}>
+  <div class="wrap inner">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    <div class="lead"><slot /></div>
+  </div>
+</section>
+
+<style>
+  .zoom-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    min-height: clamp(22rem, 60vh, 38rem);
+    padding-block: clamp(4rem, 10vw, 7rem) clamp(2.5rem, 6vw, 4rem);
+    color: #fff;
+  }
+  .background-zoom-after::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+      var(--hero-image, none) center / cover no-repeat,
+      radial-gradient(60% 80% at 20% 30%, #fb8a4c 0%, transparent 60%),
+      radial-gradient(50% 70% at 85% 70%, #9a3412 0%, transparent 65%),
+      linear-gradient(135deg, #3a1d0e, #13110f);
+    transform-origin: center;
+    animation: hero-zoom 18s ease-in-out infinite alternate;
+  }
+  /* darken for legible text on any image */
+  .zoom-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to top, rgb(0 0 0 / 0.6), rgb(0 0 0 / 0.15));
+  }
+  @keyframes hero-zoom {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.15);
+    }
+  }
+  .inner {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+  }
+  .inner > * {
+    max-width: 46rem;
+  }
+  .eyebrow {
+    color: #fdba8c;
+  }
+  h1 {
+    color: #fff;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+  }
+  .lead {
+    font-size: 1.15rem;
+    color: rgb(255 255 255 / 0.85);
+  }
+  .lead :global(strong) {
+    color: #fff;
+    font-weight: 500;
+  }
+</style>
