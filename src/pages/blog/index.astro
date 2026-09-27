@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import PostCard from '../../components/PostCard.astro';
 import Subscribe from '../../components/Subscribe.astro';
+import ZoomHero from '../../components/ZoomHero.astro';
 import { FORMATS } from '../../consts';
 import { getPosts, getTags } from '../../lib/posts';
 
@@ -12,14 +13,12 @@ const tags = getTags(posts);
 ---
 
 <Base title="Journal" description="Short lessons and deep dives that make the wisdom of the Bible practical for everyday life.">
+  <ZoomHero eyebrow="The journal" title="Lessons for the life you are actually living.">
+    <strong>Microfuel</strong> for a five minute lesson. <strong>Superfuel</strong> when you want to go deeper.
+  </ZoomHero>
+
   <div class="wrap">
-    <header class="intro">
-      <p class="eyebrow">The journal</p>
-      <h1>Lessons for the life you are actually living.</h1>
-      <p class="muted lead">
-        <strong>Microfuel</strong> for a five minute lesson. <strong>Superfuel</strong> when you want to go deeper.
-      </p>
-    </header>
+    <div class="spacer"></div>
 
     {featured && <PostCard post={featured} variant="feature" />}
 
@@ -106,21 +105,8 @@ const tags = getTags(posts);
 </script>
 
 <style>
-  .intro {
-    display: grid;
-    gap: 1rem;
-    padding-block: clamp(3rem, 8vw, 5.5rem) clamp(2rem, 5vw, 3rem);
-    max-width: 46rem;
-  }
-  h1 {
-    font-size: clamp(2.4rem, 6vw, 4rem);
-  }
-  .lead {
-    font-size: 1.15rem;
-  }
-  .lead strong {
-    color: var(--ink);
-    font-weight: 500;
+  .spacer {
+    height: clamp(2rem, 5vw, 3rem);
   }
   .toolbar {
     display: flex;
